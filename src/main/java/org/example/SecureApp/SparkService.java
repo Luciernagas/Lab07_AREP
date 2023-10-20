@@ -1,9 +1,6 @@
 package org.example.SecureApp;
 
-import org.example.AllSecureApp.URLReader;
-
 import java.util.HashMap;
-
 import static spark.Spark.*;
 
 public class SparkService {

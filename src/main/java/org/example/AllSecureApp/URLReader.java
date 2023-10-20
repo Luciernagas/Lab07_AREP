@@ -17,7 +17,6 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 public class URLReader {
-
     public static void main(String[] args) {
         try {
 
