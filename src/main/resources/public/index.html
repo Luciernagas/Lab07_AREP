@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <input type="text" id="username" name="username" placeholder="Nombre de Usuario" autocomplete="off"><br>
+        <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="off"><br>
+        <button type="button" id="submitButton" onclick="enviarDatos()">Ingresar ♥</button>
+    </form>
+</div>
+
+<script>
+    let enviarDatos =() =>{
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        if (username.trim() === '' || password.trim() === '') {
+            alert('Please enter both username and password');
+            return;
+        }
+        console.log('Username:', username);
+        console.log('Password:', password);
+
+        fetch("/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password)
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data.includes("Bienvenidx")) {
+                    document.body.innerHTML = data;
+                } else {
+                    alert(data);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>
