@@ -96,7 +96,7 @@ public class URLReader {
             StringBuilder response = new StringBuilder();
             while ((inputLine = reader.readLine()) != null) {
                 System.out.println(inputLine);
-                response.append(inputLine);
+                response.append(inputLine.trim());
             }
             reader.close();
             return response.toString();
